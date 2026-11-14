@@ -1,0 +1,162 @@
+{
+  "cli_default_open_behavior": "existing_window",
+  "agent": {
+    "model_parameters": [],
+    "tool_permissions": {
+      "default": "confirm",
+      "tools": {
+        "terminal": {
+          "default": "confirm",
+          "always_allow": [
+            {
+              "pattern": "^(awk|cargo|cat|cd|echo|find|grep|head|ls|p?npm|printf|sed|sort|tail|touch|uniq)\\b",
+            },
+            {
+              "pattern": "^git\\s+(-[A-Za-z-]*(?:\\s+\\S+)?\\s+)*(status|log|show|diff|blame|shortlog|branch|describe|reflog|rev-parse|ls-files|ls-remote|ls-tree|cat-file|symbolic-ref|name-rev|grep|whatchanged|for-each-ref|help|version|count-objects|fsck)\\b",
+            },
+            { "pattern": "^node\\s+(-[A-Za-z-]*(?:\\s+\\S+)?\\s+)*--test\\b" },
+            { "pattern": "^node\\s+--version$" },
+            { "pattern": "^(npx\\s+)?tsc\\b" },
+            { "pattern": "[<>]\\s*/dev/null|\\|\\s*tee\\s+[^|;]*/dev/null" },
+          ],
+          "always_deny": [
+            {
+              "pattern": "(^|[\\s\"'=<>:])/(dev/null[\\w./-]|dev/nul($|[^l])|dev/nu($|[^l])|dev/n($|[^u])|dev/($|[^n])|dev($|[^/])|de($|[^v])|d($|[^e])|[^d]|$)",
+            },
+            { "pattern": "(^|[\\s\"'=])~" },
+            { "pattern": "\\$\\{?HOME" },
+            { "pattern": "\\$\\{?(PWD|OLDPWD)\\b" },
+            { "pattern": "\\.\\./|(^|[\\s\"'=])\\.\\.($|[^.])" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "\\bsudo\\b" },
+            { "pattern": "(^|\\s)cd\\s*($|&&|&|;|\\|\\|)" },
+            { "pattern": "^find\\b[^|;&]*\\s-exec(dir)?\\b" },
+            { "pattern": "^git\\s+config\\s+--global" },
+            {
+              "pattern": "^(cargo|p?npm).*\\b(commit|deploy|login|publish|submit)($|\\s)",
+            },
+          ],
+        },
+        "edit_file": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\b\\.agents/skills\\b" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "^/" },
+            { "pattern": "^~" },
+            { "pattern": "\\.\\./" },
+          ],
+        },
+        "write_file": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\b\\.agents/skills\\b" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "^/" },
+            { "pattern": "^~" },
+            { "pattern": "\\.\\./" },
+          ],
+        },
+        "delete_path": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\b\\.git\\b" },
+            { "pattern": "\\b\\.agents/skills\\b" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "^/" },
+            { "pattern": "^~" },
+            { "pattern": "\\.\\./" },
+          ],
+        },
+        "move_path": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\b\\.git\\b" },
+            { "pattern": "\\b\\.agents/skills\\b" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "^/" },
+            { "pattern": "^~" },
+            { "pattern": "\\.\\./" },
+          ],
+        },
+        "copy_path": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\b\\.agents/skills\\b" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "^/" },
+            { "pattern": "^~" },
+            { "pattern": "\\.\\./" },
+          ],
+        },
+        "create_directory": {
+          "default": "allow",
+          "always_deny": [
+            { "pattern": "\\b\\.git\\b" },
+            { "pattern": "\\b\\.agents/skills\\b" },
+            { "pattern": "\\b\\.private\\b" },
+            { "pattern": "^/" },
+            { "pattern": "^~" },
+            { "pattern": "\\.\\./" },
+          ],
+        },
+        "fetch": {
+          "default": "confirm",
+          "always_allow": [
+            { "pattern": "docs\\.rs" },
+            { "pattern": "github\\.com" },
+            { "pattern": "npmjs\\.com" },
+          ]
+        },
+        "search_web": {
+          "default": "allow",
+        },
+        "skill": {
+          "default": "deny",
+          "always_allow": [
+            { "pattern": "\\b\\.agents/skills\\b/" },
+          ],
+        },
+      },
+    },
+  },
+  "buffer_font_size": 14,
+  "buffer_font_family": "Ubuntu Sans Mono",
+  "icon_theme": "Zed (Default)",
+  "languages": {
+    "CSS": {
+      "language_servers": [],
+    },
+    "Plain Text": {
+      "language_servers": [],
+    },
+    "HTML": {
+      "language_servers": [],
+    },
+    "JSON": {
+      "language_servers": [],
+    },
+    "JSONC": {
+      "language_servers": [],
+    },
+    "TypeScript": {
+      "language_servers": [],
+    },
+    "TSX": {
+      "language_servers": [],
+    },
+    "JavaScript": {
+      "language_servers": [],
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "ui_font_size": 16,
+}

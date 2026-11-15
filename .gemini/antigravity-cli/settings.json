@@ -1,0 +1,40 @@
+{
+  "toolPermission": "request-review",
+  "permissions": {
+    "allow": [
+      "command(regex:^(awk|cargo|cat|cd|echo|find|grep|head|ls|p?npm|printf|sed|sort|tail|touch|uniq)\\b)",
+      "command(regex:^git\\s+(-[A-Za-z-]*(?:\\s+\\S+)?\\s+)*(status|log|show|diff|blame|shortlog|branch|describe|reflog|rev-parse|ls-files|ls-remote|ls-tree|cat-file|symbolic-ref|name-rev|grep|whatchanged|for-each-ref|help|version|count-objects|fsck)\\b)",
+      "command(regex:^node\\s+(-[A-Za-z-]*(?:\\s+\\S+)?\\s+)*--test\\b)",
+      "command(regex:^node\\s+--version$)",
+      "command(regex:^(npx\\s+)?tsc\\b)",
+      "command(regex:[<>]\\s*/dev/null|\\|\\s*tee\\s+[^|;]*/dev/null)",
+      "read_url(docs.rs)",
+      "read_url(github.com)",
+      "read_url(npmjs.com)"
+    ],
+    "ask": [],
+    "deny": [
+      "command(regex:(^|[\\s\"'=<>])/(dev/null[\\w./-]|dev/nul($|[^l])|dev/nu($|[^l])|dev/n($|[^u])|dev/($|[^n])|dev($|[^/])|de($|[^v])|d($|[^e])|[^d/]|$))",
+      "command(regex:(^|[\\s\"'=<>:])~)",
+      "command(regex:\\$\\{?HOME\\b)",
+      "command(regex:\\$\\{?(PWD|OLDPWD)\\b)",
+      "command(regex:\\.\\./|(^|[\\s\"'=])/\\.\\.($|[^.])|(^|[\\s\"'=])\\.\\.($|[^.]))",
+      "command(regex:(^|[/\\s\"'=<>:])\\.private(/|$|[\\s\"']))",
+      "command(regex:(^|[/\\s\"'=<>:])\\.agents/skills(/|$|[\\s\"']))",
+      "command(regex:(^|[/\\s\"'=<>:])\\.git(/|$|[\\s\"']))",
+      "command(regex:\\bsudo\\b)",
+      "command(regex:^cd\\s*$)",
+      "command(regex:^find\\b.*\\s-(exec(dir)?|ok(dir)?|delete)\\b)",
+      "command(regex:^git\\s+config\\s+--(global|system|file))",
+      "command(regex:^(cargo|p?npm).*\\b(commit|deploy|login|publish|submit)($|\\s))",
+      "read_file(.private/)",
+      "read_file(regex:(^|/)\\.private(/|$))",
+      "write_file(.git/)",
+      "write_file(.private/)",
+      "write_file(.agents/skills/)",
+      "write_file(regex:(^|/)(\\.git|\\.private|\\.agents/skills)(/|$))",
+      "write_file(../*)",
+      "write_file(~/*)"
+    ]
+  }
+}
